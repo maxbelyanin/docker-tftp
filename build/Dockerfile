@@ -2,11 +2,11 @@
 FROM ubuntu:xenial
 MAINTAINER Max Belyanin <maxbelyanin@gmail.com>
 
-RUN adduser tftpd \
-	&& mkdir /tftp \
-	&& chown tftpd:tftpd /tftp \
-	&& apt-get update \
+RUN apt-get update \
  	&& apt-get install -y tftpd-hpa \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/usr/sbin/in.tftpd", "--foreground", "--user tftpd", "--address 0.0.0.0:69", "--secure /tftp"]
+VOLUME /var/tftpboot
+EXPOSE 69/udp
+ENTRYPOINT ["in.tftpd"]
+CMD ["-L", "--secure", "/var/tftpboot"]
