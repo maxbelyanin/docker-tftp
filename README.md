@@ -3,7 +3,7 @@
 ## build
 
 ```console
-docker build -t maxbelyanin/tftp .
+docker build -t tftp .
 ```
 
 ## docker-compose example:
@@ -14,13 +14,13 @@ version: '2'
 services:
 
   tftp:
-    image: maxbelyanin/tftp
+    image: maxbelyanin/tftp:alpine
     container_name: tftp
     ports:
-      - "69:69"
+      - "0.0.0.0:69:69"
     restart: always
     volumes:
-      - ./tftp:/tftp
+      - ./tftp:/var/tftpboot
 ```
 
 ## Directory Tree
