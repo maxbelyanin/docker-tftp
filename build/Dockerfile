@@ -9,4 +9,4 @@ RUN adduser tftpd \
  	&& apt-get install -y tftpd-hpa \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENTRYPOINT ["/usr/sbin/in.tftpd", "--foreground", "--address 0.0.0.0:69", "--secure /tftp"]
+ENTRYPOINT ["/usr/sbin/in.tftpd", "--foreground", "--user tftpd", "--address 0.0.0.0:69", "--secure /tftp"]
