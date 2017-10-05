@@ -3,7 +3,7 @@
 ## build
 
 ```console
-docker build -t maxbelyanin/tftp .
+docker build -t tftp .
 ```
 
 ## docker-compose example:
